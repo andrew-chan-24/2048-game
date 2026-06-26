@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22        # ✅ Updated to 22 to match your local setup
           cache: npm
 
       - name: Install dependencies
