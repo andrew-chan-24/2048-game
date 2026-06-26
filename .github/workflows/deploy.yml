@@ -26,14 +26,17 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22        # ✅ Updated to 22 to match your local setup
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci                  # ✅ Use ci instead of install (faster & safer in CI)
+
+      - name: Fix binary permissions  # ✅ Fixes the Permission denied error
+        run: chmod +x node_modules/.bin/vite
 
       - name: Build
-        run: npm run build
+        run: npx vite build          # ✅ Use npx to run vite instead of directly
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
